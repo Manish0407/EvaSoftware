@@ -1,0 +1,79 @@
+<% if @employee.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
+    <ul>
+      <% @employee.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="col-lg-6 mx-lg-auto">
+  <div class="card shadow">
+    <div class="card-header">
+      <h2 class="card-title text-center">Edit Profile</h2>
+    </div>
+    <div class="card-body">
+      <%= form_with(model: @employee, local: true) do |form| %>
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <div class="form-group mb-2">
+              <%= form.label :first_name, class: "mb-2" %>
+              <%= form.text_field :first_name, class: "form-control form-control-lg" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <div class="form-group mb-2">
+              <%= form.label :last_name, class: "mb-2" %>
+              <%= form.text_field :last_name, class: "form-control form-control-lg" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <div class="form-group mb-2">
+              <%= form.label :phone_number, class: "mb-2" %>
+              <%= form.text_field :phone_number, class: "form-control form-control-lg" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <div class="form-group mb-2">
+              <%= form.label :city, class: "mb-2" %>
+              <%= form.text_field :city, class: "form-control form-control-lg" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <div class="form-group mb-2">
+              <%= form.label :state, class: "mb-2" %>
+              <%= form.text_field :state, class: "form-control form-control-lg" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <div class="form-group mb-2">
+              <%= form.label :country, class: "mb-2" %>
+              <%= form.text_field :country, class: "form-control form-control-lg" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions text-center">
+          <%= form.submit 'Save Changes', class: "btn btn-custom btn-lg" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

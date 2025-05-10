@@ -1,0 +1,61 @@
+<div class="container-fluid" style="margin-bottom: 309px;">
+    <h3 class="navbar-brand mb-0">All Profile RM Items Details</h3>
+  <nav class="navbar navbar-light bg-light justify-content-between mt-4">
+
+    <div class="d-flex align-items-start">
+      <!-- Price Download Link -->
+      <%= link_to "Price Download ELSX", download_price_list_profile_rm_item_details_path(format: :xlsx), class: "btn btn-success text-decoration-none text-white me-3" %>
+    </div>
+      
+    <div class="d-flex align-items-end">
+      <%= form_with(url: profile_rm_item_details_path, method: :get, local: true, class: 'form-inline') do %>
+        <div class="input-group">
+          <input class="form-control" type="search" name="search" placeholder="Search" aria-label="Search" value="<%= params[:search] %>">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </div>
+      <% end %>
+    </div>
+  </nav>
+
+  <div class="card mt-4" style= "border: none;">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>RM Code</th>
+              <th>Item Name</th>
+              <th>Standard Bar Length</th>
+              <th>Cutting Blade Thickness</th>
+              <th>Standard Bar Total Trim Length</th>
+              <th>Reusable Offcut Length</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @profile_rm_item_details.each_with_index do |item, index| %>
+              <tr>
+                <td><%= item.rm_code %></td>
+                <td><%= item.rm_item_name %></td>
+                <td><%= item.standard_bar_length %></td>
+                <td><%= item.cutting_blade_thickness %></td>
+                <td><%= item.standard_bar_total_trim_length %></td>
+                <td><%= item.reusable_offcut_length %></td>
+                <td class="position-relative">
+                  <div class="dropdown dropup">
+                    <button class="btn btn-sm dropdown-toggle" type="button" id="actionMenu<%= item.id %>" data-bs-toggle="dropdown" aria-expanded="false" style="background: aliceblue; border-radius: 50%;">
+                      &#x22EE;
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                      <li><%= link_to 'Edit', edit_profile_rm_item_detail_path(item), class: 'dropdown-item text-decoration-none' %></li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

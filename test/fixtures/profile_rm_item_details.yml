@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rm_code: MyString
+  rm_item_name: MyString
+  standard_bar_length: 9.99
+  cutting_blade_thickness: 9.99
+  standard_bar_total_trim_length: 9.99
+  reusable_offcut_length: 9.99
+
+two:
+  rm_code: MyString
+  rm_item_name: MyString
+  standard_bar_length: 9.99
+  cutting_blade_thickness: 9.99
+  standard_bar_total_trim_length: 9.99
+  reusable_offcut_length: 9.99

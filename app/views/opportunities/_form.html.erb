@@ -1,0 +1,226 @@
+<!-- app/views/opportunities/new.html.erb -->
+<div class="row">
+  <div class="col-md-3" style="margin-top: 25px;">
+    <div class="list-group sticky-top" id="step-indicators">
+      <a href="#" class="list-group-item list-group-item-action active text-decoration-none" data-step="1">Basic details</a>
+      <a href="#" class="list-group-item list-group-item-action text-decoration-none" data-step="2">Site address</a>
+      <a href="#" class="list-group-item list-group-item-action text-decoration-none" data-step="3">Official info</a>
+      <%# <a href="#" class="list-group-item list-group-item-action text-decoration-none" data-step="4">Opportunity personnel</a> %>
+    </div>
+  </div>
+  <div class="col-md-9">
+    <%= form_with model: @opportunity, local: true, class: 'mt-4' do |form| %>
+    <%#= form_with model: @opportunity, url: opportunities_path, local: true, class: 'mt-4' do |form| %>
+      <div class="step" data-step="1">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Basic details</h5>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <%= form.label :project_name, "Project name *".html_safe %>
+                <%= form.text_field :project_name, class: "form-control", id: "project_name" %>
+
+                <% if @opportunity.errors[:project_name].any? %>
+                  <div class="error-message text-danger" id="project_name_error">
+                    <%= @opportunity.errors[:project_name].join(", ") %>
+                  </div>
+                <% end %>
+              </div>
+              <div class="form-group col-md-1">
+                <%= form.label :salutation %>
+                <%= form.select :salutation, ['Mr.', 'Ms.', 'Mrs.'], {}, class: 'form-control', style: "width: fit-content;" %>
+              </div>
+              <div class="form-group col-md-5">
+                <%= form.label :full_name, "Full name *".html_safe %>
+                <%= form.text_field :full_name, class: "form-control", id: "full_name", style: "width: 465px;" %>
+                
+                <% if @opportunity.errors[:full_name].any? %>
+                  <div class="error-message text-danger" id="full_name_error">
+                    <%= @opportunity.errors[:full_name].join(", ") %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <%= form.label :phone_number, "Phone number *".html_safe %>
+                <%= form.telephone_field :phone_number, class: 'form-control' %>
+
+                <% if @opportunity.errors[:phone_number].any? %>
+                  <div class="error-message text-danger" id="phone_number_error">
+                    <%= @opportunity.errors[:phone_number].join(", ") %>
+                  </div>
+                <% end %>
+              </div>
+              <div class="form-group col-md-6">
+                <%= form.label :email %>
+                <%= form.email_field :email, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= form.label :note %>
+              <%= form.text_area :note, class: 'form-control', style: "width: 89%;" %>
+            </div>
+            <button type="button" class="btn btn-primary next-step">Next</button>
+          </div>
+        </div>
+      </div>
+      <div class="step" data-step="2" style="display:none;">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Site address</h5>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <%= form.label :address1 %>
+                <%= form.text_field :address1, class: 'form-control' %>
+              </div>
+              <div class="form-group col-md-6">
+                <%= form.label :address2 %>
+                <%= form.text_field :address2, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <%= form.label :zip_code %>
+                <%= form.text_field :zip_code, class: 'form-control' %>
+              </div>
+              <div class="form-group col-md-4">
+                <%= form.label :city %>
+                <%= form.text_field :city, class: 'form-control' %>
+              </div>
+              <div class="form-group col-md-4">
+                <%= form.label :state %>
+                <%= form.text_field :state, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= form.label :country %>
+              <%= form.text_field :country, class: 'form-control' %>
+            </div>
+            <button type="button" class="btn btn-secondary prev-step">Previous</button>
+            <button type="button" class="btn btn-primary next-step">Next</button>
+          </div>
+        </div>
+      </div>
+      <div class="step" data-step="3" style="display:none;">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Official info</h5>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <%= form.label :bill_to %>
+                <%= form.text_field :bill_to, class: 'form-control' %>
+              </div>
+              <div class="form-group col-md-6">
+                <%= form.label :marketing_partner %>
+                <%= form.select :account_id, options_for_select(Account.pluck(:id, :id).map { |id, account_name| [Account.find(id).account_name, id] }, params[:account_id]), { prompt: "Select an Account" }, { class: "form-control", style: "width: 76%;" } %>
+
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <%= form.label :Managed_by, "Managed by *".html_safe %>
+                <%= form.select :employee_id, options_for_select(Employee.pluck(:id, :id).map { |id, full_name| [Employee.find(id).full_name, id] }, params[:employee_id]), { prompt: "Select an Employee" }, { class: "form-control", id: "employee_id", style: "width: 76%;" } %>
+
+                <% if @opportunity.errors[:employee_id].any? %>
+                  <div class="error-message text-danger" id="employee_id_error">
+                    <%= @opportunity.errors[:employee_id].join(", ") %>
+                  </div>
+                <% end %>
+              </div>
+              <div class="form-group col-md-6">
+                <%= form.label :opportunity_stage, "Opportunity stage *".html_safe %>
+                <%= form.select :opportunity_stage, ['Quoted', 'Sales Call', 'In Production'], { prompt: 'Select Stage' }, { class: 'form-control', id: 'opportunity_stage', style: "width: 76%;" } %>
+
+                <% if @opportunity.errors[:opportunity_stage].any? %>
+                  <div class="error-message text-danger" id="opportunity_stage_error">
+                    <%= @opportunity.errors[:opportunity_stage].join(", ") %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <%= form.label :opportunity_source, "Opportunity source *".html_safe %>
+                <%= form.select :opportunity_source, ['Marking', 'Facebook', 'Other'], { prompt: 'Select Source' }, { class: 'form-control', id: 'opportunity_source', style: "width: 76%;" } %>
+
+                <% if @opportunity.errors[:opportunity_source].any? %>
+                  <div class="error-message text-danger" id="opportunity_source_error">
+                    <%= @opportunity.errors[:opportunity_source].join(", ") %>
+                  </div>
+                <% end %>
+              </div>
+              <div class="form-group col-md-6">
+                <%= form.label :opportunity_category %>
+                <%= form.text_field :opportunity_category, class: 'form-control' %>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <%= form.label :estimated_opportunity_value %>
+                <%= form.number_field :estimated_opportunity_value, step: :any, class: 'form-control' %>
+              </div>
+              <div class="form-group col-md-6">
+                <%= form.label :expected_closure_date %>
+                <%= form.date_field :expected_closure_date, class: 'form-control', style: "width: 76%;"%>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <%= form.label :expected_supply_start_date %>
+                <%= form.date_field :expected_supply_start_date, class: 'form-control', style: "width: 76%;" %>
+              </div>
+              <div class="form-group col-md-6">
+                <%= form.label :expected_supply_end_date %>
+                <%= form.date_field :expected_supply_end_date, class: 'form-control', style: "width: 76%;" %>
+              </div>
+            </div>
+            <button type="button" class="btn btn-secondary prev-step">Previous</button>
+            <%= form.submit 'Create Opportunity', class: 'subbtn' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    let currentStep = 1;
+    const steps = document.querySelectorAll('.step');
+    const indicators = document.querySelectorAll('#step-indicators a');
+
+    function showStep(step) {
+      steps.forEach((el, index) => {
+        el.style.display = (index + 1 === step) ? 'block' : 'none';
+      });
+
+      indicators.forEach((el) => {
+        el.classList.toggle('active', parseInt(el.getAttribute('data-step')) === step);
+      });
+    }
+
+    document.querySelectorAll('.next-step').forEach(button => {
+      button.addEventListener('click', () => {
+        currentStep++;
+        showStep(currentStep);
+      });
+    });
+
+    document.querySelectorAll('.prev-step').forEach(button => {
+      button.addEventListener('click', () => {
+        currentStep--;
+        showStep(currentStep);
+      });
+    });
+
+    indicators.forEach(indicator => {
+      indicator.addEventListener('click', (e) => {
+        e.preventDefault();
+        currentStep = parseInt(indicator.getAttribute('data-step'));
+        showStep(currentStep);
+      });
+    });
+  });
+</script>

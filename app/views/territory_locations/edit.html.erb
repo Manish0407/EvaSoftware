@@ -1,0 +1,32 @@
+<h6>Edit territory location >></h6>
+<%= form_with model: @territory_location, local: true do |form| %>
+  <div class="container-fluid">
+    <div class="card mt-4 w-75 mx-auto">
+      <div class="card-header text-center">
+        Territories
+      </div>
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :territory_master_id, "Territory Name *".html_safe %>
+            <%= form.select :territory_master_id, options_for_select([[@territory_location.territory_master.territory_name, @territory_location.territory_master_id]]), {}, { class: "form-control", id: 'territory_location_name', disabled: true } %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :hierarchical_geography %>
+            <%= form.text_field :hierarchical_geography, class: 'form-control', id: 'hierarchical_geography' %>
+
+            <% if @territory_location.errors[:hierarchical_geography].any? %>
+              <div class="error-message text-danger" id="hierarchical_geography_error">
+                <%= @territory_location.errors[:hierarchical_geography].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-center">
+        <%= link_to 'Back', territory_locations_path, class: 'btn btn-secondary text-white text-decoration-none custom-hover-btn' %>
+        <%= form.submit 'Save', class: 'subbtn' %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,71 @@
+<div class="col-lg-6 mx-lg-auto">
+  <div class="card shadow">
+    <div class="card-header">
+      <h2 class="card-title text-center">Sign Up</h2>
+    </div>
+    <div class="card-body">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form' }) do |f| %>
+
+        <!-- Error messages for all fields -->
+        <%#= render "employees/shared/error_messages", resource: resource %>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group mb-2">
+              <%= f.label :first_name %>
+              <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control form-control-lg", id: "first_name" %>
+              <% if resource.errors[:first_name].any? %>
+                <div class="error-message text-danger" id="first_name_error">
+                  <%= resource.errors[:first_name].join(", ") %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <!-- Add similar blocks for other fields (last_name, email, etc.) -->
+
+          <div class="col-md-6">
+            <div class="form-group mb-2">
+              <%= f.label :last_name %>
+              <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control form-control-lg", id: "last_name" %>
+              <% if resource.errors[:last_name].any? %>
+                <div class="error-message text-danger" id="last_name_error">
+                  <%= resource.errors[:last_name].join(", ") %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group mb-2">
+              <%= f.label :email %>
+              <%= f.email_field :email, autocomplete: "email", class: "form-control form-control-lg", id: "email" %>
+              <% if resource.errors[:email].any? %>
+                <div class="error-message text-danger" id="email_error">
+                  <%= resource.errors[:email].join(", ") %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          
+          <div class="col-md-6">
+            <div class="form-group mb-2">
+              <%= f.label :password %>
+              <%= f.password_field :password, autocomplete: "new-password", class: "form-control form-control-lg", id: "password" %>
+              <% if resource.errors[:password].any? %>
+                <div class="error-message text-danger" id="password_error">
+                  <%= resource.errors[:password].join(", ") %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions text-center">
+          <%= f.submit "Sign up", class: "subbtn" %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
+

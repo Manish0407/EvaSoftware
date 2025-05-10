@@ -1,0 +1,107 @@
+<div class="container-fluid" style="margin-bottom: 309px;">
+  <div class="row">
+    <h5 class="text-left col-10"><%= @hardware_price.new_record? ? "Add Hardware Price >>" : "Edit Hardware Price >>" %></h5>
+  </div>
+  
+  <%= form_with(model: @hardware_price, local: true) do |form| %>
+    <div class="card mt-4 w-75 mx-auto">
+      <div class="card-header text-center">
+        Hardware Price Details
+      </div>
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :rm_code, "RM Code *".html_safe %>
+            <%= form.text_field :rm_code, class: "form-control" %>
+            <% if @hardware_price.errors[:rm_code].any? %>
+              <div class="error-message text-danger">
+                <%= @hardware_price.errors[:rm_code].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="form-group col-md-6">
+            <%= form.label :item_name, "Item Name *".html_safe %>
+            <%= form.text_field :item_name, class: "form-control" %>
+            <% if @hardware_price.errors[:item_name].any? %>
+              <div class="error-message text-danger">
+                <%= @hardware_price.errors[:item_name].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :brand_name, "Brand Name".html_safe %>
+            <%= form.text_field :brand_name, class: "form-control" %>
+          </div>
+
+          <div class="form-group col-md-6">
+            <%= form.label :unit, "Unit *".html_safe %><br>
+            <%= form.select :unit, 
+                            options_for_select([
+                              'Kilogram', 'Pieces', 'Meter', 'Square Meter', 
+                              'Pairs', 'Set', 'CAN', 'Milimeter', 
+                              'Roll', 'Tube', 'Packet'
+                            ], selected: @hardware_price.unit), 
+                            prompt: 'Select a Unit', 
+                            class: "form-control uniform-input", style: "height: 34px; width: 484px;" %>
+            <% if @hardware_price.errors[:unit].any? %>
+              <div class="error-message text-danger">
+                <%= @hardware_price.errors[:unit].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :currency, "Currency *".html_safe %>
+            <%= form.text_field :currency, class: "form-control" %>
+            <% if @hardware_price.errors[:currency].any? %>
+              <div class="error-message text-danger">
+                <%= @hardware_price.errors[:currency].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="form-group col-md-6">
+            <%= form.label :default_price_rate, "Default Price Rate *".html_safe %>
+            <%= form.number_field :default_price_rate, class: "form-control", step: :any %>
+            <% if @hardware_price.errors[:default_price_rate].any? %>
+              <div class="error-message text-danger">
+                <%= @hardware_price.errors[:default_price_rate].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :weight_per_unit, "Weight Per Unit".html_safe %>
+            <%= form.number_field :weight_per_unit, class: "form-control", step: :any %>
+          </div>
+
+          <div class="form-group col-md-6">
+            <%= form.label :select_price_level, "Select Price Level".html_safe %>
+            <%= form.text_field :select_price_level, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <%= form.label :rate_calculate_formula, "Rate Calculate Formula".html_safe %>
+            <%= form.text_area :rate_calculate_formula, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-center">
+        <span class="col-2 text-end">
+          <%= link_to 'Back', hardware_prices_path, class: 'btn btn-secondary text-white text-decoration-none' %>
+        </span>
+        <%= form.submit class: 'subbtn' %>
+      </div>
+    </div>
+  <% end %>
+</div>

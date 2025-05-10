@@ -1,0 +1,218 @@
+<!-- Locations & Territories Section -->
+<div class="container-fluid">
+  <div class="row mb-4 card-header">
+    <div class="col-12">
+      <p class="fw-bold fs-5">Locations & Territories</p>
+      <p>Create geographical locations and assign them to territories</p>
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+          <%= link_to locations_path, class: 'text-decoration-none' do %>
+            <div class="card text-center shadow">
+              <div class="card-body">
+                <%= image_tag 'first_glass.png', class: 'mb-2', style: 'width: 41.199px; height: 41.199px;' %>
+                <h5 class="card-title">Locations</h5>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+          <%= link_to territory_masters_path, class: 'text-decoration-none' do %>
+            <div class="card text-center shadow">
+              <div class="card-body">
+                <%= image_tag 'first_glass.png', class: 'mb-2', style: 'width: 41.199px; height: 41.199px;' %>
+                <h5 class="card-title">Territory masters</h5>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+          <%= link_to territory_locations_path, class: 'text-decoration-none' do %>
+            <div class="card text-center shadow">
+              <div class="card-body">
+                <%= image_tag 'first_glass.png', class: 'mb-2', style: 'width: 41.199px; height: 41.199px;' %>
+                <h5 class="card-title">Territory locations</h5>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+          <%= link_to user_territories_path, class: 'text-decoration-none' do %>
+            <div class="card text-center shadow">
+              <div class="card-body">
+                <%= image_tag 'first_glass.png', class: 'mb-2', style: 'width: 41.199px; height: 41.199px;' %>
+                <h5 class="card-title">User territory</h5>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+          <%= link_to sales_office_index_path, class: 'text-decoration-none' do %>
+            <div class="card text-center shadow">
+              <div class="card-body">
+                <%= image_tag 'first_glass.png', class: 'mb-2', style: 'width: 41.199px; height: 41.199px;' %>
+                <h5 class="card-title">Sales office</h5>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div <%# class="col-lg-4 col-md-4 col-sm-6 mb-4">
+          <div class="card text-center shadow">
+            <d %>iv class="card-body">
+              <%#= image_tag 'first_glass.png', class: 'mb-2', style: 'width: 41.199px; height: 41.199px;' %>
+              <%# <h5 class="card-title">Pin code mapping</h5> %>
+            </d<%# iv>
+          </div>
+        </div %>>
+      </div>
+    </div>
+  </div>
+
+  <!-- Raw Material Pricing Section -->
+  <div class="row mb-4">
+    <div class="col-12 card-header">
+      <p class="fw-bold fs-5">Raw Material Pricing</p>
+      <p>Create price lists against the raw materials and the overall price structure to be used in a quote</p>
+      <div class="row">
+        
+        <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+          <%= link_to raw_material_prices_path, class: 'text-decoration-none' do %>
+            <div class="card text-center shadow">
+              <div class="card-body">
+                <%= image_tag 'profile.png', class: 'mb-2', style: 'width: 41.199px; height: 41.199px;' %>
+                <h5 class="card-title">Profile</h5>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+          <%= link_to reinforcement_prices_path, class: 'text-decoration-none' do %>
+            <div class="card text-center shadow">
+              <div class="card-body">
+                <%= image_tag 'first_glass.png', class: 'mb-2', style: 'width: 41.199px; height: 41.199px;' %>
+                <h5 class="card-title">Reinforcement</h5>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <%# <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+          <div class="card text-center shadow">
+            <div class="card-body"> %>
+              <%#= image_tag 'first_glass.png', class: 'mb-2', style: 'width: 41.199px; height: 41.199px;' %>
+            <%#   <h5 class="card-title">Surface finishes</h5>
+            </div>
+          </div>
+        </div> %>
+        <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+          <%= link_to hardware_prices_path, class: 'text-decoration-none' do %>
+            <div class="card text-center shadow">
+              <div class="card-body">
+                <%= image_tag 'first_glass.png', class: 'mb-2', style: 'width: 41.199px; height: 41.199px;' %>
+                <h5 class="card-title">Hardware</h5>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+          <div class="card text-center shadow">
+            <div class="card-body">
+              <%= image_tag 'price-list2.png', class: 'mb-2', style: 'width: 41.199px; height: 41.199px;' %>
+              <h5 class="card-title">Price structure</h5>
+            </div>
+          </div>  
+        </div>
+        
+          <!-- Import Data Modal -->
+       <%#  <div class="modal fade" id="importDataModal" tabindex="-1" aria-labelledby="importDataModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="importDataModalLabel">Import data</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              
+              <div class="modal-body">
+                <div class="row">
+                  <!-- Upload Data Section -->
+                  <div class="col-md-6 text-center">
+                    <div class="upload-icon p-3 border border-primary rounded">
+                      <i class="bi bi-upload" style="font-size: 2rem; color: #0d6efd;"></i>
+                    </div>
+                    <p class="mt-2">Upload your files</p> %>
+                    <%#= link_to 'Upload', upload_price_list_page_raw_material_prices_path, class: 'btn btn-primary text-decoration-none text-white' %>
+                  <%# </div> %>
+                  
+                  <%# <div class="col-md-6 text-center">
+                    <div class="download-icon p-3 border border-success rounded"> <!-- Adding border and padding -->
+                      <i class="bi bi-filetype-xls" style="font-size: 2rem; color: #198754;"></i> <!-- Custom color -->
+                    </div>
+
+                    <p class="mt-2">Download sample format</p> %>
+                      <%#= link_to "Download", download_price_list_raw_material_prices_path(format: :xlsx), class: "btn btn-primary", class: 'btn btn-success text-decoration-none text-white' %>
+               <%#    </div>
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <p class="text-muted" style="font-size: small; flex: auto;">Note: Only XLS & XLSX formats with max size 10MB</p>
+              </div>
+            </div>
+          </div>
+        </div> %>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Glass Pricing Section -->
+  <div class="row mb-4 card-header">
+    <div class="col-12">
+      <p class="fw-bold fs-5">Glass Pricing</p>
+      <p>Manage glass and glass pricing</p>
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+          <%= link_to glass_items_path, class: 'text-decoration-none' do %>
+            <div class="card text-center shadow">
+              <div class="card-body">
+                <%= image_tag 'first_glass.png', class: 'mb-2', style: 'width: 41.199px; height: 41.199px;' %>
+                <h5 class="card-title">Glass</h5>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+          <%= link_to download_price_list_glass_items_path(format: :xlsx), class: "text-decoration-none d-block h-100" do %>
+            <div class="card text-center shadow h-100">
+              <div class="card-body">
+                <%= image_tag 'second_glass.png', class: 'mb-2', style: 'width: 41.199px; height: 41.199px;' %>
+                <h5 class="card-title">Glass price list</h5>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!-- Raw material setting Section -->
+  <div class="row mb-4 card-header">
+    <div class="col-12">
+      <p class="fw-bold fs-5">Raw Material Settings</p>
+      <p>Manipulate raw material item and settings</p>
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+          <%= link_to glass_items_path, class: 'text-decoration-none' do %>
+            <div class="card text-center shadow">
+              <div class="card-body">
+                <%= image_tag 'price-list.png', class: 'mb-2', style: 'width: 41.199px; height: 41.199px;' %>
+                <h5 class="card-title">Profile Rm Item Details</h5>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+

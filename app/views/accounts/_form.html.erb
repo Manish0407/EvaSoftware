@@ -1,0 +1,103 @@
+<%= form_with(model: account, local: true) do |form| %>
+  <div class="d-flex justify-content-center" style="margin-top: 31px; margin-bottom: 10px;">
+    <div class="card w-75">
+      <div class="card-header text-center">
+        Official Info
+      </div>
+
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :account_name, "Account name *".html_safe %>
+            <%= form.text_field :account_name, class: "form-control", id: "account_name" %>
+
+            <% if @account.errors[:account_name].any? %>
+              <div class="error-message text-danger" id="account_name_error">
+                <%= @account.errors[:account_name].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="form-group col-md-6">
+            <%= form.label :Managed_by, "Managed by *".html_safe %>
+            <%= form.select :employee_id, options_for_select(Employee.pluck(:id, :id).map { |id, full_name| [Employee.find(id).full_name, id] }, params[:employee_id]), { prompt: "Select an Employee" }, { class: "form-control", id: "employee_id", style: "width: 76%;" } %>
+
+            <% if @account.errors[:employee_id].any? %>
+              <div class="error-message text-danger" id="employee_id_error">
+                <%= @account.errors[:employee_id].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :gst_number %>
+            <%= form.text_field :gst_number, class: "form-control" %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :email %>
+            <%= form.text_field :email, class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :external_account_code %>
+            <%= form.text_field :external_account_code, class: "form-control" %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :remark %>
+            <%= form.text_field :remark, class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :phone_number %>
+            <%= form.text_field :phone_number, class: "form-control" %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :website %>
+            <%= form.text_field :website, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="card-header text-center">
+          Billing Info
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :address1 %>
+            <%= form.text_field :address1, class: "form-control" %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :address2 %>
+            <%= form.text_field :address2, class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :zip_code %>
+            <%= form.text_field :zip_code, class: "form-control" %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :city %>
+            <%= form.text_field :city, class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :state %>
+            <%= form.text_field :state, class: "form-control" %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :country %>
+            <%= form.text_field :country, class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-group text-center">
+          <%= form.submit class: "subbtn" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+

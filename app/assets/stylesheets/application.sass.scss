@@ -1,0 +1,262 @@
+// Entry point for your Sass build
+// Entry point for your Sass build
+:root {
+  --color-primary: #1e40af;
+  --color-background: #ffffff;
+  --color-border: #e5e7eb;
+  --color-text: #111827;
+  --color-text-muted: #6b7280;
+  --color-button-hover: #f3f4f6;
+  --door-preview-bg: #eff6ff;
+  --door-preview-border: #bfdbfe;
+}
+
+/* Base Styles */
+.configurator {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+/* Header Styles */
+.configurator__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  max-width: 100%;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.configurator__title-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.configurator__logo {
+  width: 24px;
+  height: 24px;
+  background-color: var(--color-primary);
+}
+
+.configurator__title {
+  font-size: 0.875rem;
+}
+
+.configurator__quantity {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-text-muted);
+}
+
+.configurator__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Body Layout */
+.configurator__body {
+  flex: 1;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Sidebar Styles */
+.configurator__sidebar {
+  width: 4rem;
+  border-right: 1px solid var(--color-border);
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Main Content Styles */
+.configurator__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.configurator__canvas {
+  flex: 1;
+  position: relative;
+  margin: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  background: #fff;
+  display: grid;
+  place-items: center;
+}
+
+/* Door Preview Styles */
+.door-preview {
+  position: relative;
+  padding: 2rem;
+}
+
+.door-preview__frame {
+  width: 150px;
+  height: 240px;
+  border: 2px solid var(--door-preview-border);
+  background-color: var(--door-preview-bg);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.door-preview__panel {
+  height: 100%;
+}
+
+.door-preview__panel:first-child {
+  border-right: 1px solid var(--door-preview-border);
+}
+
+.door-preview__dimension {
+  position: absolute;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+}
+
+.door-preview__dimension--width {
+  top: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.door-preview__dimension--height {
+  left: -1rem;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+/* Toolbar Styles */
+.configurator__toolbar {
+  height: 4rem;
+  border-top: 1px solid var(--color-border);
+  margin-top: 1rem;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Button Styles */
+.button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.button--primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.button--primary:hover {
+  opacity: 0.9;
+}
+
+.icon-button {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 0.375rem;
+  background: transparent;
+  cursor: pointer;
+  color: var(--color-text);
+}
+
+.icon-button:hover {
+  background-color: var(--color-button-hover);
+}
+
+.sidebar-button {
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 0.375rem;
+  background: transparent;
+  cursor: pointer;
+  color: var(--color-text);
+}
+
+.sidebar-button:hover {
+  background-color: var(--color-button-hover);
+}
+
+/* View Toggle Styles */
+.view-toggle {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.view-toggle__button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.375rem;
+  background: transparent;
+  cursor: pointer;
+  color: var(--color-text);
+}
+
+.view-toggle__button:hover {
+  background-color: var(--color-button-hover);
+}
+
+.view-toggle__button--active {
+  background-color: var(--color-button-hover);
+}
+
+/* Toolbar Actions */
+.toolbar-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.canvas_container{
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+  padding: 0
+}
+
+.my-tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+.my-tooltip .tooltiptext {
+  visibility: hidden;
+  // width: 120px;
+  background-color: rgb(98, 98, 98);
+  color: #fff;
+  text-align: center;
+  padding: 6px 6px;
+  border-radius: 6px;
+  font-size: 12px;
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 9;
+  left: 40px;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.my-tooltip:hover .tooltiptext {
+  visibility: visible;
+}

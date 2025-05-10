@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  enternal_code: MyString
+  glass_code: MyString
+  glass_thickness: 9.99
+  report_category: MyString
+  glass_weight: 9.99
+  unit: MyString
+  glass_color: MyString
+  basic_value_in_sqmt: 9.99
+  basic_value_in_sqFt: 9.99
+  glass_name: MyString
+  glass_alias: MyString
+  status: false
+
+two:
+  enternal_code: MyString
+  glass_code: MyString
+  glass_thickness: 9.99
+  report_category: MyString
+  glass_weight: 9.99
+  unit: MyString
+  glass_color: MyString
+  basic_value_in_sqmt: 9.99
+  basic_value_in_sqFt: 9.99
+  glass_name: MyString
+  glass_alias: MyString
+  status: false

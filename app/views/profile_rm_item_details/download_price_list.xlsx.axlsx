@@ -1,0 +1,14 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Raw Material Prices") do |sheet|
+  # Define styles
+  header_style = wb.styles.add_style(b: true, alignment: { horizontal: :center })
+  center_style = wb.styles.add_style(alignment: { horizontal: :center })
+
+  # Add header row with bold and center alignment
+  sheet.add_row ["RM Code", "RM Item Name", "Standard Bar Length", "Cutting Blade Thickness", "Standard Bar Total Trim Length", "Reusable Offcut Length"], style: header_style
+  
+  # Add data rows with center alignment
+  @profile_rm_item_detail_records.each do |record|
+    sheet.add_row [record.rm_code, record.rm_item_name, record.standard_bar_length, record.cutting_blade_thickness, record.standard_bar_total_trim_length, record.reusable_offcut_length, ], style: center_style
+  end
+end

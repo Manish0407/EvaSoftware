@@ -1,0 +1,57 @@
+<div class="container-fluid" style="margin-bottom: 309px;">
+  <div class="row">
+    <h2 class="text-left col-10">Contact</h2>
+    <span class="col-2 text-end"><%= link_to 'Add contact', new_contact_path, class: 'btn btn-primary text-decoration-none text-white' %></span>
+  </div>
+
+  <nav class="navbar navbar-light bg-light justify-content-end mt-">
+    <%= form_with(url: contacts_path, method: :get, local: true, class: 'form-inline d-flex') do %>
+      <input class="form-control mr-2" type="search" name="search" placeholder="Search" aria-label="Search" value="<%= params[:search] %>">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    <% end %>
+  </nav>
+  <div class="table-responsive mt-4">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Contact name</th>
+          <th>Account name</th>
+          <th>Managed by</th>
+          <th>Email</th>
+          <th>Phone no.</th>
+          <th>City</th>
+          <th>Create On</th>
+          <th>Opportunities</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @contacts.each do |contact| %>
+          <% account = Account.find_by(id: contact.account_id) %>
+          <% employee = Employee.find_by(id: contact.employee_id) %>
+          <tr>
+            <td><%= contact.full_name %></td>
+            <td><%= account.present? ? account.account_name : "Unknown Employee" %></td>
+            <td><%= employee.present? ? employee.full_name : "Unknown Employee" %></td>
+            <td><%= contact.email %></td>
+            <td><%= contact.phone_number %></td>
+            <td><%= contact.city %></td>
+            <td><%= contact.created_at.strftime("%B %d, %Y %I:%M %p") %></td>
+            <td><%= %></td>
+            <td class="position-relative">
+              <div class="dropdown dropup">
+                <button class="btn btn-sm dropdown-toggle" type="button" id="actionMenu<%= contact.id %>" data-bs-toggle="dropdown" aria-expanded="false" style="background: aliceblue; border-radius: 50%;">
+                  &#x22EE;
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><%= link_to 'Edit', edit_contact_path(contact), class: 'dropdown-item text-decoration-none' %></li>
+                  <li><%= link_to 'Delete', contact_path(contact), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item text-decoration-none' %></li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

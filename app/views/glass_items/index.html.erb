@@ -1,0 +1,37 @@
+<div class="container-fluit mt-4">
+  <div class="card border-0">
+    <h4 class="text-start">Glass Items</h4>
+    <div class="card-header row">
+      <div class="col-6">
+        
+      </div>
+      <div class="col-6"><%= link_to 'Add New Glass Item', new_glass_item_path, class: 'btn btn-primary float-right text-decoration-none text-white' %></div>
+    </div>
+    <div class="card-body">
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th>Glass Name</th>
+            <th>Thickness</th>
+            <th>Weight</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @glassitems.each_with_index do |glassitem| %>
+            <tr>
+              <td><%= glassitem.glass_name %></td>
+              <td><%= glassitem.glass_thickness %></td>
+              <td><%= glassitem.glass_weight %></td>
+              <td><%= glassitem.status ? 'Active' : 'Inactive' %></td>
+              <td>
+                <%= link_to 'Edit', edit_glass_item_path(glassitem), class: 'btn btn-warning btn-sm text-decoration-none' %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

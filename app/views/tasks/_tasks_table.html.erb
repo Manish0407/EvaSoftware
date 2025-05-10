@@ -1,0 +1,47 @@
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Task title</th>
+        <th>Employee</th>
+        <th>Opportunity</th>
+        <th>Task medium</th>
+        <th>Task description</th>
+        <th>Opportunity stage</th>
+        <th>Contact</th>
+        <th>Schedule</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% tasks.each do |task| %>
+        <% contact = Contact.find_by(id: task.contact_id) %>
+        <% employee = Employee.find_by(id: task.employee_id) %>
+        <% opportunity = Opportunity.find_by(id: task.opportunity_id) %>
+        <tr>
+          <td><%= task.task_title %></td>
+          <td><%= employee.present? ? employee.full_name : "Unknown Employee" %></td>
+          <td><%= opportunity.present? ? opportunity.full_name : "Unknown Opportunity" %></td>
+          <td><%= task.task_medium %></td>
+          <td><%= task.task_description %></td>
+          <td><%= task.opportunity_stage %></td>
+          <td><%= contact.present? ? contact.full_name : "Unknown Contact" %></td>
+          <td><%= task.schedule.strftime('%Y-%m-%d %I:%M:%S %p') %></td>
+          <td><%= task.status %></td>
+          <td class="position-relative">
+            <div class="dropdown dropup">
+              <button class="btn btn-sm dropdown-toggle" type="button" id="actionMenu<%= task.id %>" data-bs-toggle="dropdown" aria-expanded="false" style="background: aliceblue; border-radius: 50%;">
+                &#x22EE;
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><%= link_to 'Edit', edit_task_path(task), class: 'dropdown-item text-decoration-none' %></li>
+                <li><%= link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item text-decoration-none' %></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

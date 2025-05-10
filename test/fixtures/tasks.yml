@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  task_title: MyString
+  employee_id: 1
+  task_medium: MyString
+  schedule: 2024-07-22 12:13:10
+  status: MyString
+  task_description: MyText
+  opportunity_id: 1
+  opportunity_stage: MyString
+  contact_id: 1
+
+two:
+  task_title: MyString
+  employee_id: 1
+  task_medium: MyString
+  schedule: 2024-07-22 12:13:10
+  status: MyString
+  task_description: MyText
+  opportunity_id: 1
+  opportunity_stage: MyString
+  contact_id: 1

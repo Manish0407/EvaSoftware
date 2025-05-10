@@ -1,0 +1,61 @@
+<h5 class="text-start mb-4">Edit Profile RM Item Detail</h5>
+
+<div class="col-lg-6 mx-lg-auto">
+  <div class="card shadow">
+    <div class="card-header">
+      <h6 class="card-title text-center fw-bold">Edit RM Item  details</h6>
+    </div>
+    <div class="card-body">
+      <%= form_with model: @profile_rm_item_detail, local: true do |form| %>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group mb-3">
+              <%= form.label :rm_code, class: "mb-2" %>
+              <%= form.text_field :rm_code, class: "form-control form-control-lg" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group mb-3">
+              <%= form.label :rm_item_name, class: "mb-2" %>
+              <%= form.text_field :rm_item_name, class: "form-control form-control-lg" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group mb-3">
+              <%= form.label :standard_bar_length, class: "mb-2" %>
+              <%= form.number_field :standard_bar_length, step: :any, class: "form-control form-control-lg" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group mb-3">
+              <%= form.label :cutting_blade_thickness, class: "mb-2" %>
+              <%= form.number_field :cutting_blade_thickness, step: :any, class: "form-control form-control-lg" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group mb-3">
+              <%= form.label :standard_bar_total_trim_length, class: "mb-2" %>
+              <%= form.number_field :standard_bar_total_trim_length, step: :any, class: "form-control form-control-lg" %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group mb-3">
+              <%= form.label :reusable_offcut_length, class: "mb-2" %>
+              <%= form.number_field :reusable_offcut_length, step: :any, class: "form-control form-control-lg" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <%= form.submit 'Update', class: "btn btn-success btn-lg mt-3" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

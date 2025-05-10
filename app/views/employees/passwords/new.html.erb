@@ -1,0 +1,32 @@
+<div class="col-lg-6 mx-lg-auto">
+  <div class="card-shadow">
+    <div class="card-header">
+      <h2 class="card-title text-center">Forgot your password?</h2>
+    </div>
+    <div class="card-body">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%#= render "employees/shared/error_messages", resource: resource %>
+
+        <div class="form-group mb-2">
+          <%= f.label :email %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg" %>
+
+          <% if resource.errors[:email].any? %>
+            <div class="error-message text-danger" id="email_error">
+              <%= resource.errors[:email].join(", ") %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Send me reset password instructions", class: "btn btn-custom btn-lg" %>
+        </div>
+      <% end %>
+
+      <%= render "employees/shared/links" %>
+    </div>
+  </div>
+</div>
+
+
+

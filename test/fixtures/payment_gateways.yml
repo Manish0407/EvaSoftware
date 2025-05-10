@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  opportunity_id: 1
+  payment_medium: MyString
+  transaction_no: MyString
+  amount: 9.99
+  payment_date_and_time: 2024-07-18 19:36:25
+  description: MyText
+  audit_status: 1
+
+two:
+  opportunity_id: 1
+  payment_medium: MyString
+  transaction_no: MyString
+  amount: 9.99
+  payment_date_and_time: 2024-07-18 19:36:25
+  description: MyText
+  audit_status: 1

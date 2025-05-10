@@ -1,0 +1,38 @@
+<h6>Add territory location >></h6>
+<%= form_with model: @territory_location, local: true do |form| %>
+  <div class="container-fluid">
+    <div class="card mt-4 w-75 mx-auto">
+      <div class="card-header text-center">
+        Territories
+      </div>
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :territory_location_name, "Territory Name *".html_safe %>
+            <%= form.select :territory_master_id, options_for_select(@available_territory_names.map { |o| [o.territory_name, o.id] }, @territory_location.territory_master_id), { prompt: "Select territory name" }, { class: "form-control", style: "width: 76%;", id: 'territory_location_name' } %>
+            
+            <% if @territory_location.errors[:territory_location_name].any? %>
+              <div class="error-message text-danger" id="territory_location_name_error">
+                <%= @territory_location.errors[:territory_location_name].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :hierarchical_geography %>
+            <%= form.text_field :hierarchical_geography, class: 'form-control', id: 'hierarchical_geography', style: "width: 76%;" %>
+
+            <% if @territory_location.errors[:hierarchical_geography].any? %>
+              <div class="error-message text-danger" id="hierarchical_geography_error">
+                <%= @territory_location.errors[:hierarchical_geography].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-center">
+        <span><%= link_to 'Back', territory_locations_path, class: 'btn btn-secondary text-white text-decoration-none custom-hover-btn' %></span>
+        <%= form.submit class: 'subbtn' %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,28 @@
+<h3>Contact</h3>
+
+<div class="col-lg-6 mx-lg-auto">
+  <div class="card shadow">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <span>Contact Details</span>
+      <%= link_to 'Edit', edit_contact_path(@contact), class: 'btn btn-primary text-white text-decoration-none' %>
+    </div>
+    <div class="card-body">
+      <div class="profile-info">
+        <p><strong>Salutation:</strong> <%= @contact.salutation %></p>
+        <p><strong>Full Name:</strong> <%= @contact.full_name %></p>
+        <p><strong>Phone Number:</strong> <%= @contact.phone_number %></p>
+        <p><strong>Email:</strong> <%= @contact.email %></p>
+        <p><strong>Designation:</strong> <%= @contact.designation %></p>
+        <p><strong>Remark:</strong> <%= @contact.remark %></p>
+        <p><strong>Address 1:</strong> <%= @contact.address1 %></p>
+        <p><strong>Address 2:</strong> <%= @contact.address2 %></p>
+        <p><strong>Zip Code:</strong> <%= @contact.zip_code %></p>
+        <p><strong>City:</strong> <%= @contact.city %></p>
+        <p><strong>State:</strong> <%= @contact.state %></p>
+        <p><strong>Country:</strong> <%= @contact.country %></p>
+        <p><strong>Managed by:</strong> <%= @contact.employee.full_name %></p>
+        <p><strong>Account Name:</strong> <%= @contact.account.account_name %></p>
+      </div>
+    </div>
+  </div>
+</div>

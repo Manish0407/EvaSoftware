@@ -1,0 +1,33 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Raw Material Prices") do |sheet|
+  # Define styles
+  header_style = wb.styles.add_style(b: true, alignment: { horizontal: :center })
+  center_style = wb.styles.add_style(alignment: { horizontal: :center })
+
+  # Add header row with bold and center alignment
+  sheet.add_row ["Glass Code", "Report Caterogry", "Glass Color", "GlassThickness", "RmWeightPerUnit", "Unit", "Enternal Code", "Glass Name", "Glass Alias", "Status", "Basic Value"], style: header_style
+  
+  # Add data rows with center alignment
+ 
+
+   @glass_items_price_records.each do |record|
+    # Map status to "Active" or "Inactive"
+    status_display = record.status ? "Active" : "Inactive"
+    
+    sheet.add_row [
+      record.glass_code, 
+      record.report_category, 
+      record.glass_color, 
+      record.glass_thickness, 
+      record.glass_weight, 
+      record.unit, 
+      record.enternal_code, 
+      record.glass_name, 
+      record.glass_alias, 
+      status_display,
+      record.basic_value_in_sqmt
+    ], style: center_style
+  end
+
+end
+

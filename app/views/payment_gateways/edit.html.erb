@@ -1,0 +1,28 @@
+<div class="col-lg-6 mx-lg-auto">
+  <div class="card shadow">
+    <div class="card-header">
+      <h2 class="card-title text-center">Audit Payment</h2>
+    </div>
+    <div class="card-body">
+      <%= form_with(model: @payment_gateway, url: update_audit_status_payment_gateway_path(@payment_gateway), local: true) do |form| %>
+        
+        <!-- Audit Status Radio Buttons -->
+        <div class="mb-3">
+          <%= form.label :audit_status, "Audit Status" %><br>
+          <%= form.radio_button :audit_status, 'approve', checked: @payment_gateway.audit_status == "approve" %>
+          <%= form.label :audit_status_approve, "Approve" %>
+          <%= form.radio_button :audit_status, 'rejected', checked: @payment_gateway.audit_status == "rejected" %>
+          <%= form.label :audit_status_rejected, "Rejected" %>
+        </div>
+
+        <!-- Reason Text Area -->
+        <div class="mb-3">
+          <%= form.label :reason %>
+          <%= form.text_area :reason, class: 'form-control', rows: 3, style: "height: 42px; width: auto;" %>
+        </div>
+        
+        <%= form.submit 'Update Audit Status', class: 'btn btn-primary subbtn' %>
+      <% end %>
+    </div>
+  </div>
+</div>

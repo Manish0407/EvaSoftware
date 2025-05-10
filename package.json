@@ -1,0 +1,38 @@
+{
+  "name": "app",
+  "private": "true",
+  "scripts": {
+    "build:css:compile": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
+    "build:css:prefix": "postcss ./app/assets/builds/application.css --use=autoprefixer --output=./app/assets/builds/application.css",
+    "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
+    "watch:css": "nodemon --watch ./app/assets/stylesheets/ --ext scss --exec \"yarn build:css\"",
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/javascripts/builds/ --public-path=/assets  --loader:.js=jsx"
+  },
+  "browserslist": [
+    "defaults"
+  ],
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@hotwired/stimulus": "^3.2.2",
+    "@hotwired/turbo-rails": "^8.0.12",
+    "@mui/icons-material": "^6.4.5",
+    "@mui/material": "^6.4.5",
+    "@react-icons/all-files": "^4.1.0",
+    "@reduxjs/toolkit": "^2.5.1",
+    "konva": "^9.3.18",
+    "mui-color-input": "^5.0.1",
+    "nodemon": "^3.1.9",
+    "npm": "^11.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-icons": "^5.5.0",
+    "react-konva": "^19.0.3",
+    "react-konva-utils": "^1.1.0",
+    "react-redux": "^9.2.0",
+    "sass": "^1.85.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}

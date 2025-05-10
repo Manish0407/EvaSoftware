@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-sm-auto sticky-top">
+    <div class="d-flex flex-sm-column flex-row flex-nowrap bg-light align-items-center sticky-top" style="position: fixed; top: 85px; height: calc(100vh - 35px);">
+      <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center" style="background-color: midnightblue;top: 10; height: 100vh;">
+        <li>
+          <%= link_to root_path, class: 'nav-link py-3 px-2 class_visit', aria: { current: 'page' } do %>
+          <i class="bi-grid fs-1"></i>
+          <% end %>
+        </li>
+
+        <div class="btn-group dropend">
+          <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle class_visit" id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-rolodex h2" style="margin-left: 10px;"></i>
+          </a>
+          <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
+            <li><a class="dropdown-item text-decoration-none" href="<%= accounts_path %>">Account</a></li>
+            <li><a class="dropdown-item text-decoration-none" href="<%= contacts_path %>">Contact</a></li>
+          </ul>
+        </div>
+
+        <li>
+          <%= link_to(opportunities_path, class: "nav-link py-3 px-2 class_visit", title: "", "data-bs-toggle": "tooltip", "data-bs-placement": "right", "data-bs-original-title": "opportunity") do %>
+          <i class="bi-sunrise fs-1"></i>
+          <% end %>
+        </a>
+      </li>
+      <li>
+        <%= link_to(quotes_path, class: "nav-link py-3 px-2 class_visit", title: "", "data-bs-toggle": "tooltip", "data-bs-placement": "right", "data-bs-original-title": "quotes") do %>
+          <i class="bi-menu-down fs-1"></i>
+          <% end %>
+      </li>
+
+      <li>
+        <%= link_to(payment_gateways_path, class: "nav-link py-3 px-2 class_visit", title: "", "data-bs-toggle": "tooltip", "data-bs-placement": "right", "data-bs-original-title": "payment") do %>
+        <i class="bi-bank fs-1"></i>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to(tasks_path, class: "nav-link py-3 px-2 class_visit", title: "", "data-bs-toggle": "tooltip", "data-bs-placement": "right", "data-bs-original-title": "task") do %>
+        <i class="bi bi-list-task fs-1"></i>
+        <% end %>
+      </li>
+
+      <li style="position: absolute; bottom: 50px; left: 10px;"> 
+        <%= link_to(settings_path, class: "nav-link py-3 px-2 class_visit", title: "", "data-bs-toggle": "tooltip", "data-bs-placement": "right", "data-bs-original-title": "setting") do %>
+          <i class="bi-gear fs-1"></i>
+      <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+

@@ -1,0 +1,105 @@
+<%= form_with(model: task, local: true) do |form| %>
+  <div class="container-fluid">
+    <div class="row">
+      <h5 class="text-left col-10"><%= task.new_record? ? 'Add Task' : 'Edit Task >>' %></h5>
+    </div>
+
+    <div class="card mt-4 w-75 mx-auto">
+      <div class="card-header text-center">
+        Task Details
+      </div>
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :task_title, "Task title *".html_safe %>
+            <%= form.text_field :task_title, class: 'form-control' %>
+            <% if task.errors[:task_title].any? %>
+              <div class="text-danger"><%= task.errors[:task_title].first %></div>
+            <% end %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :employee_id, 'Delegate to *'.html_safe %>
+            <%= form.select :employee_id, options_for_select(Employee.pluck(:id, :id).map { |id, full_name| [Employee.find(id).full_name, id] }, params[:employee_id]), { prompt: "Select an Employee" }, { class: "form-control", style: "width: 76%;" } %>
+            <% if task.errors[:employee_id].any? %>
+              <div class="text-danger"><%= task.errors[:employee_id].first %></div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :schedule, "Schedule *" .html_safe%>
+            <%= form.datetime_local_field :schedule, class: 'form-control', style: "width: 76%;" %>
+            <% if task.errors[:schedule].any? %>
+              <div class="text-danger"><%= task.errors[:schedule].first %></div>
+            <% end %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :task_medium, "Task medium *".html_safe %>
+            <%= form.select :task_medium, ['Meeting_On_Side', 'Call', 'Meeting_On_Line', 'Mail', 'Whatapp', 'SMS', 'Journal', 'Meeting_In_Showroom'], { prompt: 'task_medium' }, class: 'form-control', style: "width: 76%;" %>
+            <% if task.errors[:task_medium].any? %>
+              <div class="text-danger"><%= task.errors[:task_medium].first %></div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :status, "Status *".html_safe %>
+            <%= form.select :status, task.status_options, { prompt: 'Status' }, class: 'form-control', style: "width: 76%;" %>
+            <% if task.errors[:status].any? %>
+              <div class="text-danger"><%= task.errors[:status].first %></div>
+            <% end %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :task_description %>
+            <%= form.text_area :task_description, class: 'form-control', style: "width: 76%;" %>
+          </div>
+        </div>
+
+        <div class="card-header text-center">
+          Related To
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :opportunity_id, "Opportunity *".html_safe %>
+            <%= form.select :opportunity_id, options_for_select(Opportunity.pluck(:id, :id).map { |id, full_name| [Opportunity.find(id).full_name, id] }, params[:opportunity_id]), { prompt: "Select an Opportunity" }, { class: "form-control", style: "width: 76%;" } %>
+            <% if task.errors[:opportunity_id].any? %>
+              <div class="text-danger"><%= task.errors[:opportunity_id].first %></div>
+            <% end %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :opportunity_stage, "Opportunity stage *".html_safe %>
+            <%= form.select :opportunity_stage, ['Quoted', 'Sales Call', 'Account settled', 'In Production'], { prompt: 'opportunity_stage' }, class: 'form-control', style: "width: 76%;" %>
+            <% if task.errors[:opportunity_stage].any? %>
+              <div class="text-danger"><%= task.errors[:opportunity_stage].first %></div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :contact_id %>
+            <%= form.select :contact_id, options_for_select(Contact.pluck(:id, :id).map { |id, full_name| [Contact.find(id).full_name, id] }, params[:contact_id]), { prompt: "Select a Contact" }, { class: "form-control", style: "width: 76%;" } %>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-center">
+        <span><%= link_to 'Back', tasks_path, class: 'btn btn-secondary text-white text-decoration-none custom-hover-btn' %></span>
+        <%= form.submit class: 'subbtn' %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<script>
+$(document).ready(function() {
+  // Remove error messages on input or change event
+  $('input, select, textarea').on('input change', function() {
+    // Remove the next element if it has the 'text-danger' class
+    if ($(this).next('.text-danger').length > 0) {
+      $(this).next('.text-danger').remove();
+    }
+  });
+});
+</script>

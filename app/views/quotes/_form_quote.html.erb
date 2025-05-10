@@ -1,0 +1,33 @@
+<%= form_with(model: quote, local: true) do |form| %>
+  <div class="container-fluid">
+    <div class="row">
+      <h5 class="text-left col-10"><%= quote.new_record? ? 'Add Quote' : 'Edit Quote >>' %></h5>
+    </div>
+
+    <div class="card mt-4 w-75 mx-auto">
+      <div class="card-header text-center">
+        Quote Details
+      </div>
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :opportunity_id, "Opportunity *".html_safe %>
+            <%= form.select :opportunity_id, options_for_select(@available_opportunities.map { |o| [o.full_name, o.id] }, quote.opportunity_id), { prompt: "Select an Opportunity" }, { class: "form-control", style: "width: 76%;" } %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :expected_supply_start_date %>
+            <%= form.date_field :expected_supply_start_date, class: 'form-control', style: "width: 76%;" %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :expected_supply_end_date %>
+            <%= form.date_field :expected_supply_end_date, class: 'form-control', style: "width: 76%;" %>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-center">
+        <span><%= link_to 'Back', quotes_path, class: 'btn btn-secondary text-white text-decoration-none custom-hover-btn' %></span>
+        <%= form.submit class: 'subbtn' %>
+      </div>
+    </div>
+  </div>
+<% end %>

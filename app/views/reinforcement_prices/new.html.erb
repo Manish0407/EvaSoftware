@@ -1,0 +1,53 @@
+<div class="container-fluid mt-4">
+  <small>Settings > Add Reinforcement Price</small>
+  <h2>Add Reinforcement Price</h2>
+
+  <div class="card mt-4 w-75 mx-auto">
+    <div class="card-header text-center">
+      Add New Reinforcement Price
+    </div>
+    <%= form_with model: @reinforcement_price, local: true, class: "form-horizontal" do |form| %>
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :rm_code, "RM Code *" %>
+            <%= form.text_field :rm_code, class: "form-control" %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :item_name, "Item Name *" %>
+            <%= form.text_field :item_name, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-row mt-3">
+          <div class="form-group col-md-6">
+            <%= form.label :brand, "Brand" %>
+            <%= form.text_field :brand, class: "form-control" %>
+          </div>
+          <div class="form-group col-md-6">
+             <%= form.label :unit, "Unit *".html_safe %>
+    			  <%= form.select :unit, 
+    			                  options_for_select([
+    			                    'Kilogram', 'Pieces', 'Meter', 'Square Meter', 
+    			                    'Pairs', 'Set', 'CAN', 'Milimeter', 
+    			                    'Roll', 'Tube', 'Packet'
+    			                  ], selected: @reinforcement_price.unit), 
+    			                  prompt: 'Select a Unit', 
+    			                  class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-row mt-3">
+          <div class="form-group col-md-6">
+            <%= form.label :default_price_rate, "Price Level" %>
+            <%= form.text_field :default_price_rate, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-center">
+        <%= form.submit "Save", class: "btn btn-success subbtn" %>
+        <%= link_to "Back", reinforcement_prices_path, class: "btn btn-secondary text-decoration-none text-white" %>
+      </div>
+    <% end %>
+  </div>
+</div>

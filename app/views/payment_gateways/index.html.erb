@@ -1,0 +1,64 @@
+<div class="container-fluid" style="margin-bottom: 309px;">
+  <div class="row">
+    <h3 class="text-left col-10">Payment Gateways</h3>
+    <span class="col-2 text-end"><%= link_to 'New Payment', new_payment_gateway_path, class: 'btn btn-primary text-decoration-none text-white' %></span>
+  </div>
+
+  <nav class="navbar navbar-light bg-light justify-content-end mt-4">
+    <%= form_with(url: payment_gateways_path, method: :get, local: true, class: 'form-inline d-flex') do %>
+      <input class="form-control mr-2" type="search" name="search" placeholder="Search" aria-label="Search" value="<%= params[:search] %>">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    <% end %>
+  </nav>
+
+  <div class="card mt-4" style= "border: none;">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Opportunity</th>
+              <th>Opportunity value</th>
+              <th>Payment medium</th>
+              <th>Transaction code</th>
+              <th>Transaction date</th>
+              <th>Transaction value</th>
+              <th>Audit Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @payment_gateways.each do |payment_gateway| %>
+              <% optp = Opportunity.find_by(id: payment_gateway.opportunity_id) %>
+              <tr>
+                <td><%= optp.present? ? optp.project_name : "" %></td>
+                <td>₹<%= number_to_currency(optp.estimated_opportunity_value, unit: '', delimiter: ',', precision: 2) %></td>
+                <td><%= payment_gateway.payment_medium %></td>
+                <td><%= payment_gateway.transaction_no %></td>
+                <td>
+                  <%= payment_gateway.payment_date_and_time.strftime('%d-%m-%Y') %>
+                  <br>
+                  <span style="color: #888; font-weight: lighter;">
+                    <%= payment_gateway.payment_date_and_time.strftime('%I:%M:%S %p') %>
+                  </span>
+                </td>
+                <td>₹<%= number_to_currency(payment_gateway.amount, unit: '', delimiter: ',', precision: 2) %></td>
+                <td><%= payment_gateway.audit_status %></td>
+                <td class="position-relative">
+                  <div class="dropdown dropup">
+                    <button class="btn btn-sm dropdown-toggle" type="button" id="actionMenu<%= payment_gateway.id %>" data-bs-toggle="dropdown" aria-expanded="false" style="background: aliceblue; border-radius: 50%;">
+                      &#x22EE;
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                      <li><%= link_to 'Audit payment', edit_payment_gateway_path(payment_gateway), class: 'dropdown-item text-decoration-none' %></li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

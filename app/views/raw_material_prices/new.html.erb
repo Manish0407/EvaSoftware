@@ -1,0 +1,73 @@
+<div class="container-fluid mt-4">
+  <small>Settings > Profile Price > Add New</small>
+
+  <%= form_with(model: @raw_material_price, local: true) do |form| %>
+    <div class="card mt-4 w-75 mx-auto">
+      <div class="card-header text-center">
+        Profile Price Details
+      </div>
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :rm_code, "RM Code *" %>
+            <%= form.text_field :rm_code, class: "form-control" %>
+            <% if @raw_material_price.errors[:rm_code].any? %>
+              <div class="text-danger">
+                <%= @raw_material_price.errors[:rm_code].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="form-group col-md-6">
+            <%= form.label :item_name, "Item Name *" %>
+            <%= form.text_field :item_name, class: "form-control" %>
+            <% if @raw_material_price.errors[:item_name].any? %>
+              <div class="text-danger">
+                <%= @raw_material_price.errors[:item_name].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :brand_name, "Brand Name" %>
+            <%= form.text_field :brand_name, class: "form-control" %>
+          </div>
+
+          <div class="form-group col-md-6">
+            <%= form.label :unit, "Unit *" %>
+            <%= form.select :unit, options_for_select(['Kilogram', 'Pieces', 'Meter', 'Square Meter', 'Pairs', 'Set', 'CAN', 'Millimeter', 'Roll', 'Tube', 'Packet'], selected: @raw_material_price.unit), prompt: 'Select a Unit', class: "form-control" %>
+            <% if @raw_material_price.errors[:unit].any? %>
+              <div class="text-danger">
+                <%= @raw_material_price.errors[:unit].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :default_price_rate, "Default Price Rate *" %>
+            <%= form.number_field :default_price_rate, class: "form-control", step: :any %>
+            <% if @raw_material_price.errors[:default_price_rate].any? %>
+              <div class="text-danger">
+                <%= @raw_material_price.errors[:default_price_rate].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="form-group col-md-6">
+            <%= form.label :currency, "Currency *" %>
+            <%= form.text_field :currency, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="card-footer text-center">
+          <%= link_to "Back", raw_material_prices_path, class: "btn btn-secondary text-decoration-none text-white" %>
+          <%= form.submit "Save", class: "btn btn-primary subbtn" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

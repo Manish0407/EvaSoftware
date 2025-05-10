@@ -1,0 +1,47 @@
+<div class="container-fluid mt-4">
+  <small>Settings > Profile Price</small>
+  <h2>Profile Price</h2>
+
+  <nav class="navbar navbar-light bg-light mt-4">
+    <div class="container-fluid">
+      <!-- Left-aligned content -->
+      <span class="navbar-brand mb-0 h1">
+          <div><%#= link_to 'New material Price', new_raw_material_price_path, class: 'btn btn-primary text-decoration-none' %>
+            <%= link_to "Price Download ELSX", download_price_list_raw_material_prices_path(format: :xlsx), class: "btn btn-primary", class: 'btn btn-success text-decoration-none text-white' %>
+          </div>
+      </span>
+
+      <!-- Right-aligned search bar -->
+      <form class="d-flex ms-auto" method="get" action="">
+        <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search" value="<%= params[:search] %>">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+  <table class="table table-bordered mt-5 text-center">
+    <thead>
+      <tr>
+        <th class="text-center">RM Code</th>
+        <th class="text-center">Item Name</th>
+        <th class="text-center">Brand Name</th>
+        <th class="text-center">Unit</th>
+        <th class="text-center">Default Price Rate</th>
+        <th class="text-center">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @raw_material_prices.each do |price| %>
+        <tr>
+          <td><%= price.rm_code %></td>
+          <td><%= price.item_name %></td>
+          <td><%= price.brand_name %></td>
+          <td><%= price.unit %></td>
+          <td><%= price.default_price_rate %></td>
+          <td><%= link_to 'Edit', edit_raw_material_price_path(price), class: 'btn btn-warning btn-sm text-decoration-none' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<%= paginate @raw_material_prices %>

@@ -1,0 +1,49 @@
+<div class="container-fluid" style="margin-bottom: 309px;">
+  <div class="row">
+    <h3 class="text-left col-10">Account</h3>
+    <span class="col-2 text-end"><%= link_to 'Add account', new_account_path, class: 'btn btn-primary text-decoration-none text-white' %></span>
+  </div>
+  
+  <nav class="navbar navbar-light bg-light justify-content-end mt-4">
+    <%= form_with(url: accounts_path, method: :get, local: true, class: 'form-inline d-flex') do %>
+      <input class="form-control mr-2" type="search" name="search" placeholder="Search" aria-label="Search" value="<%= params[:search] %>">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    <% end %>
+  </nav>
+  
+  <div class="table-responsive mt-4">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Account name</th>
+          <th>Managed by</th>
+          <th>Email</th>
+          <th>Last contacted</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @accounts.each do |account| %>
+          <% employee = Employee.find_by(id: account.employee_id) %>
+          <tr>
+            <td><%= account.account_name %></td>
+            <td><%= employee.present? ? employee.full_name : "Unknown Employee" %></td>
+            <td><%= account.email %></td>
+            <td><%= account.created_at.strftime("%B %d, %Y %I:%M %p") %></td>
+            <td class="position-relative">
+              <div class="dropdown dropup">
+                <button class="btn btn-sm dropdown-toggle" type="button" id="actionMenu<%= account.id %>" data-bs-toggle="dropdown" aria-expanded="false" style="background: aliceblue; border-radius: 50%;">
+                  &#x22EE;
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><%= link_to 'Edit', edit_account_path(account), class: 'dropdown-item text-decoration-none' %></li>
+                  <li><%= link_to 'Delete', account_path(account), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item text-decoration-none' %></li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

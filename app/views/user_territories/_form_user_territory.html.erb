@@ -1,0 +1,41 @@
+<%= form_with model: @user_territorie, local: true do |form| %>
+  <div class="container-fluid">
+    <div class="card mt-4 w-75 mx-auto">
+      <div class="card-header text-center">
+        User Territory
+      </div>
+      <div class="card-body">
+        <div class="form-row">
+          <!-- Employee Selection -->
+          <div class="form-group col-md-6">
+            <%= form.label :employee_id, "Employee Name *".html_safe %>
+            <%= form.select :employee_id, options_for_select(@available_employee_names.map { |e| ["#{e.first_name} #{e.last_name}", e.id] }, @user_territorie.employee_id), { prompt: "Select employee name" }, { class: "form-control", id: 'employee_id' } %>
+
+            <% if @user_territorie.errors[:employee_id].any? %>
+              <div class="error-message text-danger" id="employee_id_error">
+                <%= @user_territorie.errors[:employee_id].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+
+          <!-- Territory Selection -->
+          <div class="form-group col-md-6">
+            <%= form.label :territory_master_id, "Territory *".html_safe %>
+            <%= form.collection_select :territory_master_id, TerritoryMaster.all, :id, :territory_name, { prompt: "Select territory" }, { class: "form-control", id: 'territory_master_id' } %>
+
+            <% if @user_territorie.errors[:territory_master_id].any? %>
+              <div class="error-message text-danger" id="territory_master_id_error">
+                <%= @user_territorie.errors[:territory_master_id].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer text-center">
+        <%= link_to 'Back', user_territories_path, class: 'btn btn-secondary text-white text-decoration-none custom-hover-btn' %>
+        <%= form.submit 'Save', class: 'subbtn' %>
+      </div>
+    </div>
+  </div>
+<% end %>

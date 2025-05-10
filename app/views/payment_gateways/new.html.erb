@@ -1,0 +1,76 @@
+<div class="container-fluid" style="margin-bottom: 309px;">
+  <div class="row">
+    <h5 class="text-left col-10">Add Payment >></h5>
+  </div>
+  
+  <%= form_with(model: @payment_gateway, local: true) do |form| %>
+    <div class="card mt-4 w-75 mx-auto">
+      <div class="card-header text-center">
+        Payment Details
+      </div>
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :opportunity_id, "Opportunity *".html_safe %>
+            <%= form.select :opportunity_id, options_for_select(Opportunity.pluck(:id, :id).map { |id, project_name| [Opportunity.find(id).project_name, id] }, params[:opportunity_id]), { prompt: "Select an Opportunity" }, { class: "form-control", id: "opportunity_id", style: "width: 76%;" } %>
+            
+            <% if @payment_gateway.errors[:opportunity_id].any? %>
+              <div class="error-message text-danger" id="opportunity_id_error">
+                <%= @payment_gateway.errors[:opportunity_id].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="form-group col-md-6">
+            <%= form.label :payment_medium, "Payment medium *".html_safe %>
+            <%= form.text_field :payment_medium, class: "form-control", id: "payment_medium" %>
+
+            <% if @payment_gateway.errors[:payment_medium].any? %>
+              <div class="error-message text-danger" id="payment_medium_error">
+                <%= @payment_gateway.errors[:payment_medium].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :transaction_no %>
+            <%= form.text_field :transaction_no, class: "form-control" %>
+          </div>
+
+          <div class="form-group col-md-6">
+            <%= form.label :amount, "Amount *".html_safe %>
+            <%= form.number_field :amount, class: "form-control", id: "amount", step: :any %>
+
+            <% if @payment_gateway.errors[:amount].any? %>
+              <div class="error-message text-danger" id="amount_error">
+                <%= @payment_gateway.errors[:amount].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :payment_date_and_time, "Payment date and time *".html_safe %>
+            <%= form.datetime_local_field :payment_date_and_time, class: "form-control", id: "payment_date_and_time", style: "width: 76%;" %>
+
+            <% if @payment_gateway.errors[:payment_date_and_time].any? %>
+              <div class="error-message text-danger" id="payment_date_and_time_error">
+                <%= @payment_gateway.errors[:payment_date_and_time].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="form-group col-md-6">
+            <%= form.label :description %>
+            <%= form.text_area :description, class: "form-control", style: "width: 76%;" %>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-center">
+      	<span class="col-2 text-end"><%= link_to 'Back', payment_gateways_path, class: 'btn btn-secondary text-white text-decoration-none' %></span>
+        <%= form.submit class: 'subbtn' %>
+      </div>
+    </div>
+  <% end %>
+</div>

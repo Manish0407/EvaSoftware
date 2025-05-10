@@ -1,0 +1,61 @@
+<div class="container-fluid" style="margin-bottom: 309px;">
+  <div class="row">
+    <h3 class="text-left col-10">Opportunity</h3>
+    <span class="col-2 text-end"><%= link_to 'New Opportunity', new_opportunity_path, class: 'btn btn-primary text-decoration-none text-white' %></span>
+  </div>
+
+  <nav class="navbar navbar-light bg-light justify-content-end mt-4">
+    <%= form_with(url: opportunities_path, method: :get, local: true, class: 'form-inline d-flex') do %>
+      <input class="form-control mr-2" type="search" name="search" placeholder="Search" aria-label="Search" value="<%= params[:search] %>">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    <% end %>
+  </nav>
+
+  <div class="card mt-4" style= "border: none;">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Project name</th>
+              <th>Account</th>
+              <th>Contact</th>
+              <th>Managed by</th>
+              <th>Deal stage</th>
+              <th>Deal value</th>
+              <th>Location</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @opportunities.each do |opportunity| %>
+              <% employee = Employee.find_by(id: opportunity.employee_id) %>
+              <% account = Account.find_by(id: opportunity.account_id) %>
+              <tr>
+                <td><%= opportunity.project_name %></td>
+                <td><%= account.present? ? employee.account_name : "" %></td>
+                <td><%= opportunity.full_name %></td>
+                <td><%= employee.present? ? employee.full_name : "" %></td>
+                <td><%= opportunity.opportunity_stage %></td>
+                <td>₹<%= number_to_currency(opportunity.estimated_opportunity_value, unit: '', delimiter: ',', precision: 2) %></td>
+                <td><%= opportunity.city %></td>
+                <td class="position-relative">
+                  <div class="dropdown dropup">
+                    <button class="btn btn-sm dropdown-toggle" type="button" id="actionMenu<%= opportunity.id %>" data-bs-toggle="dropdown" aria-expanded="false" style="background: aliceblue; border-radius: 50%;">
+                      &#x22EE;
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                      <li><%= link_to 'Add task', new_task_path, class: 'dropdown-item text-decoration-none' %></li>
+                      <li><%= link_to 'Edit', edit_opportunity_path(opportunity), class: 'dropdown-item text-decoration-none' %></li>
+                      <li><%= link_to 'Delete', opportunity_path(opportunity), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item text-decoration-none' %></li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

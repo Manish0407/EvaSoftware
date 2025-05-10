@@ -1,0 +1,47 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project_name: MyString
+  salutation: MyString
+  phone_number: MyString
+  email: MyString
+  note: MyText
+  address1: MyString
+  address2: MyString
+  zip_code: MyString
+  city: MyString
+  state: MyString
+  country: MyString
+  bill_to: MyString
+  marketing_partner: MyString
+  employee_id: 1
+  opportunity_stage: MyString
+  opportunity_source: MyString
+  opportunity_category: MyString
+  estimated_opportunity_value: 9.99
+  expected_closure_date: 2024-07-19
+  expected_supply_start_date: 2024-07-19
+  expected_supply_end_date: 2024-07-19
+
+two:
+  project_name: MyString
+  salutation: MyString
+  phone_number: MyString
+  email: MyString
+  note: MyText
+  address1: MyString
+  address2: MyString
+  zip_code: MyString
+  city: MyString
+  state: MyString
+  country: MyString
+  bill_to: MyString
+  marketing_partner: MyString
+  employee_id: 1
+  opportunity_stage: MyString
+  opportunity_source: MyString
+  opportunity_category: MyString
+  estimated_opportunity_value: 9.99
+  expected_closure_date: 2024-07-19
+  expected_supply_start_date: 2024-07-19
+  expected_supply_end_date: 2024-07-19

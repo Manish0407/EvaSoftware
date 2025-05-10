@@ -1,0 +1,143 @@
+<div class="container-fluid" style="margin-bottom: 309px;">
+
+  <%= form_with(model: glassitem, local: true) do |form| %>
+    <div class="card mt-4 w-75 mx-auto">
+      <div class="card-header text-center">
+        Glass Item Details
+      </div>
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :enternal_code, "Eternal Code *".html_safe %>
+            <%= form.text_field :enternal_code, class: "form-control", id: "enternal_code" %>
+            <% if glassitem.errors[:enternal_code].any? %>
+              <div class="error-message text-danger" id="enternal_code_error">
+                <%= glassitem.errors[:enternal_code].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :glass_code, "Glass Code *".html_safe %>
+            <%= form.text_field :glass_code, class: "form-control", id: "glass_code" %>
+            <% if glassitem.errors[:glass_code].any? %>
+              <div class="error-message text-danger" id="glass_code_error">
+                <%= glassitem.errors[:glass_code].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :glass_thickness, "Glass Thickness *".html_safe %>
+            <%= form.number_field :glass_thickness, class: "form-control", step: :any, id: "glass_thickness" %>
+            <% if glassitem.errors[:glass_thickness].any? %>
+              <div class="error-message text-danger" id="glass_thickness_error">
+                <%= glassitem.errors[:glass_thickness].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :report_category, "Report Category *".html_safe %>
+            <%= form.text_field :report_category, class: "form-control", id: "report_category" %>
+            <% if glassitem.errors[:report_category].any? %>
+              <div class="error-message text-danger" id="report_category_error">
+                <%= glassitem.errors[:report_category].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :glass_weight, "Glass Weight *".html_safe %>
+            <%= form.number_field :glass_weight, class: "form-control", step: :any, id: "glass_weight" %>
+            <% if glassitem.errors[:glass_weight].any? %>
+              <div class="error-message text-danger" id="glass_weight_error">
+                <%= glassitem.errors[:glass_weight].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :unit, "Unit *".html_safe %>
+            <%= form.text_field :unit, class: "form-control", id: "unit" %>
+            <% if glassitem.errors[:unit].any? %>
+              <div class="error-message text-danger" id="unit_error">
+                <%= glassitem.errors[:unit].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :basic_value_in_sqmt, "Basic Value in SqMt *".html_safe %>
+            <%= form.number_field :basic_value_in_sqmt, class: "form-control", step: :any, id: "basic_value_in_sqmt" %>
+            <% if glassitem.errors[:basic_value_in_sqmt].any? %>
+              <div class="error-message text-danger" id="basic_value_in_sqmt_error">
+                <%= glassitem.errors[:basic_value_in_sqmt].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :basic_value_in_sqFt, "Basic Value in SqFt *".html_safe %>
+            <%= form.number_field :basic_value_in_sqFt, class: "form-control", step: :any, id: "basic_value_in_sqFt" %>
+            <% if glassitem.errors[:basic_value_in_sqFt].any? %>
+              <div class="error-message text-danger" id="basic_value_in_sqFt_error">
+                <%= glassitem.errors[:basic_value_in_sqFt].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :glass_color, "Glass Color *".html_safe %>
+            <%= form.text_field :glass_color, class: "form-control", id: "glass_color" %>
+            <% if glassitem.errors[:glass_color].any? %>
+              <div class="error-message text-danger" id="glass_color_error">
+                <%= glassitem.errors[:glass_color].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+          <div class="form-group col-md-6">
+           <%= form.label :glass_name, "Glass Name *".html_safe %>
+            <%= form.text_field :glass_name, class: "form-control", id: "glass_name" %>
+            <% if glassitem.errors[:glass_name].any? %>
+              <div class="error-message text-danger" id="glass_name_error">
+                <%= glassitem.errors[:glass_name].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :glass_alias, "Glass Alias *".html_safe %>
+            <%= form.text_field :glass_alias, class: "form-control", id: "glass_alias" %>
+            <% if glassitem.errors[:glass_alias].any? %>
+              <div class="error-message text-danger" id="glass_alias_error">
+                <%= glassitem.errors[:glass_alias].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :status, "Status *".html_safe %>
+            <%= form.check_box :status, id: "status" %> Active
+            <% if glassitem.errors[:status].any? %>
+              <div class="error-message text-danger" id="status_error">
+                <%= glassitem.errors[:status].join(", ") %>
+              </div>
+            <% end %>           
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-center">
+        <span class="col-2 text-end">
+          <%= link_to 'Back', glass_items_path, class: 'btn btn-secondary text-white text-decoration-none' %>
+        </span>
+        <%= form.submit class: 'btn btn-success subbtn' %>
+      </div>
+    </div>
+  <% end %>
+</div>

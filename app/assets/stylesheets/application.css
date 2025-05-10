@@ -1,0 +1,66 @@
+/* ...
+ *= require_self
+ *= require_tree .
+ */
+
+
+body {
+  padding-top: 56px;
+}
+
+/*
+a.button, a.button:link, a.button:visited, input[type=submit], input[type=button], button {
+  background-image: none;
+  background-color: skyblue;
+}
+
+*/
+.class_visit {
+  color: #a0a1ad !important;
+}
+
+.class_visit:focus, .class_visit:hover {
+    color: white !important;
+}
+
+/* a:hover {
+    color: white !important;
+}*/
+.subbtn{
+  background: #2383e9 !important;
+  color: white;
+  border-radius: 5px !important;
+  height: 37px;
+}
+
+
+.custom-hover-btn {
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+.custom-hover-btn:hover {
+  background-color: #6c757d; /* Darker shade for background */
+  color: #fff; /* Text color on hover */
+}
+
+.zoom-out {
+  transform-origin: 0 0;
+}
+
+.card-title {
+  font-family: none;
+}
+
+#dash-table {
+  background-color: whitesmoke;
+  border-bottom: hidden;
+}
+
+.save-status::before {
+  content: "✓";
+  color: green;
+  font-weight: bold;
+}
+
+
+

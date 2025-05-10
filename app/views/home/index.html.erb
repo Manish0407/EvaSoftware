@@ -1,0 +1,291 @@
+<div class="container-fluid">
+  <!-- Dashboard Title -->
+  <div class="row">
+    <div class="col-12 text-start my-4">
+      <h3>Dashboard</h3>
+    </div>
+  </div>
+
+  <!-- Summary Cards -->
+  <div class="row">
+    <div class="col-md-3 col-sm-6 my-2">
+      <div class="card shadow">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <small>Created Opportunity</small>
+              <h2 class="card-text"><%= @created_opportunities_count %></h2>
+            </div>
+            <div class="col-sm-6 text-end">
+              <i class="fa fa-file-text fa-3x"></i>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-6">
+              <p>Total value:</p>
+            </div>
+            <div class="col-sm-6 text-end">
+              <p>₹<%= number_to_currency(@total_estimated_value, unit: '', delimiter: ',', precision: 2) %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6 my-2">
+      <div class="card shadow">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <small>Newly Quoted</small>
+              <h2 class="card-text"><%= @created_opportunities_count %></h2>
+            </div>
+            <div class="col-sm-6 text-end">
+              <i class="fa fa-pencil-square-o fa-3x"></i>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-6">
+              <p>Total value:</p>
+            </div>
+            <div class="col-sm-6 text-end">
+              <p>₹<%= number_to_currency(@total_estimated_value, unit: '', delimiter: ',', precision: 2) %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6 my-2">
+      <div class="card shadow">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <small>Won Opportunity</small>
+              <h2 class="card-text">0</h2>
+            </div>
+            <div class="col-sm-6 text-end">
+              <i class="fa fa-handshake-o fa-3x"></i>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-6">
+              <p>Total value:</p>
+            </div>
+            <div class="col-sm-6 text-end">
+              <p>₹0.00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6 my-2">
+      <div class="card shadow">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <small>Lost Opportunity</small>
+              <h2 class="card-text">0</h2>
+            </div>
+            <div class="col-sm-6 text-end">
+              <i class="fa fa-times-circle fa-3x"></i>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-6">
+              <p>Total value:</p>
+            </div>
+            <div class="col-sm-6 text-end">
+              <p>₹0.00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sales Chart -->
+<div class="row">
+  <div class="col-12 my-2">
+    <div class="card shadow">
+      <div class="card-body">
+        <h5 class="card-title d-flex justify-content-between">
+          Sales
+          <%= form_with(url: root_path, method: :get, local: true) do %>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                Select View
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><%= link_to 'Daily', root_path(view: 'daily'), class: 'dropdown-item' %></li>
+                <li><%= link_to 'Weekly', root_path(view: 'weekly'), class: 'dropdown-item' %></li>
+                <li><%= link_to 'Monthly', root_path(view: 'monthly'), class: 'dropdown-item' %></li>
+                <li><%= link_to 'Quarterly', root_path(view: 'quarterly'), class: 'dropdown-item' %></li>
+                <li><%= link_to 'Yearly', root_path(view: 'yearly'), class: 'dropdown-item' %></li>
+              </ul>
+            </div>
+          <% end %>
+        </h5>
+        <div id="chart-container">
+          <%= column_chart @opportunities_data %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  <!-- Lost Reasons and Active Opportunities -->
+  <div class="row">
+    <div class="col-12 col-md-4 my-2">
+      <div class="card shadow text-center" style="background-color: #2e6fe7; color: white; height: 400px;">
+        <div class="card-body">
+          <div>
+            <h6 class="text-start">Lost Reason</h6>
+          </div>
+          <div style="margin: 3px; padding: 3px;">
+            <i class="bi bi-currency-exchange" style="font-size: xxx-large;"></i>
+            <h1 class="card-text" style="color: gold;">₹0.00</h1>
+            <h3 class="card-title">Lost Opportunity</h3>
+          </div>
+          <div>
+            <i class="bi bi-chevron-double-down" style="font-size: xxx-large;"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="col-12 col-md-8 my-2">
+      <div class="card shadow text-center" style="height: 400px;">
+        <div class="card-body">
+          <h5 class="card-title text-start">All active opportunities in various stages</h5>
+          <table class="table table-hover">
+            <thead>
+              <tr id="dash-table">
+                <th>Opportunity stage</th>
+                <th>Quantity</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Dynamic content should be added here -->
+              <tr style="text-align: start;">
+                <td>Vijay kumar</td>
+                <td>17</td>
+                <td>₹4,915,245.29</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  <div class="col-12 my-2">
+    <div class="card shadow">
+      <div class="card-body">
+        <h5 class="card-title">Teams of the Month</h5>
+        <table class="table table-hover">
+          <thead>
+            <tr id="dash-table">
+              <th>Team</th>
+              <th>Top deal</th>
+              <th>Members</th>
+              <th>Top member</th>
+              <th>Count</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Dynamic content should be added here -->
+            <tr>
+              <td colspan="6" class="text-center">No data found</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Teams Performance -->
+    <div class="col-12 col-md-12 my-2">
+      <div class="card shadow">
+        <div class="card-body">
+          <h5 class="card-title">Teams Performance</h5>
+          <table class="table table-hover">
+            <thead>
+              <tr id="dash-table">
+                <th>Executive name</th>
+                <th>Created opportunity</th>
+                <th>Won opportunity</th>
+                <th>Lost opportunity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Dynamic content should be added here -->
+              <tr>
+                <td>Vijay kumar</td>
+                <td>17</td>
+                <td>₹4,915,245.29</td>
+                <td>₹0.00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sales Location -->
+  <div class="row">
+        <!-- Opportunity Source -->
+    <div class="col-12 col-md-6 my-2">
+      <div class="card shadow">
+        <div class="row card-body">
+            <h5 class="card-header">Opportunity Source</h5>
+          <div class='col-md-6 mt-4'>
+            <%= pie_chart @opportunities_value_data %>
+          </div>
+          <div class='col-md-3' style="margin: auto;">
+            <%= @created_opportunities_count %>
+          </div>
+          <div class='col-md-3' style="margin: auto;">
+            <i class="bi bi-shield-check"></i>
+            <span>Marketing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 my-2">
+      <div class="card shadow" style="height: 415px;">
+        <div class="card-body">
+          <h5 class="card-title">Sales Location</h5>
+          <table class="table table-hover">
+            <thead>
+              <tr id="dash-table">
+                <th>Location</th>
+                <th>Quantity</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Dynamic content should be added here -->
+              <tr>
+                <td colspan="3" class="text-center">No data found</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

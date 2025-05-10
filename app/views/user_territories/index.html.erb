@@ -1,0 +1,43 @@
+<div class="container-fluid" style="margin-bottom: 309px; margin-top: inherit;">
+  <div class="row">
+    <h3 class="text-left col-10">User Territory</h3>
+    <span class="col-2 text-end"><%= link_to 'Add user territory', new_user_territory_path, class: 'btn btn-primary text-decoration-none text-white' %></span>
+  </div>
+  <div class="container card mt-4" style="border: none;">
+    <div class="card-body">
+      <div class="table-responsive" style="overflow: hidden;">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Territory name</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @user_territories.each do |user_territory| %>
+              <% employee = Employee.find_by(id: user_territory.employee_id) %>
+              <% terri_location = TerritoryMaster.find_by(id: user_territory.territory_master_id) %>
+              <tr>
+                <td><%= employee.present? ? employee.full_name : "" %></td>
+                <td><%= terri_location.present? ? terri_location.territory_name : "" %></td>
+                <td class="position-relative">
+                  <div class="dropdown dropup">
+                    <button class="btn btn-sm dropdown-toggle" type="button" id="actionMenu<%= user_territory.id %>" data-bs-toggle="dropdown" aria-expanded="false" style="background: aliceblue; border-radius: 50%;">
+                      &#x22EE;
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                      <li><%= link_to 'Edit', edit_user_territory_path(user_territory), class: 'dropdown-item text-decoration-none' %></li>
+                      <li><%= link_to 'Delete', user_territory_path(user_territory), method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item text-decoration-none' %></li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div> 
+</div>

@@ -1,0 +1,114 @@
+<%= form_with(model: contact, local: true) do |form| %>
+  <div class="d-flex justify-content-center" style="margin-top: 31px; margin-bottom: 10px;">
+    <div class="card w-75">
+      <div class="card-header text-center">
+        Official Info
+      </div>
+
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :Salutation %>
+            <%= form.select :salutation, ['Mr.', 'Ms.', 'Mrs.'], { prompt: 'Salutation' }, class: 'form-control', style: "width: 76%;" %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :full_name, "Full name *".html_safe %>
+            <%= form.text_field :full_name, class: "form-control" %>
+            
+            <% if @contact.errors[:full_name].any? %>
+              <div class="error-message text-danger" id="full_name_error">
+                <%= @contact.errors[:full_name].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :Managed_by, "Managed by *".html_safe %>
+            <%= form.select :employee_id, options_for_select(Employee.pluck(:id, :id).map { |id, full_name| [Employee.find(id).full_name, id] }, params[:employee_id]), { prompt: "Select an Employee" }, { class: "form-control", style: "width: 76%;" } %>
+
+            <% if @contact.errors[:employee_id].any? %>
+              <div class="error-message text-danger" id="employee_id_error">
+                <%= @contact.errors[:employee_id].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :account_name %>
+            <%= form.select :account_id, options_for_select(Account.pluck(:id, :id).map { |id, account_name| [Account.find(id).account_name, id] }, params[:account_id]), { prompt: "Select an Account" }, { class: "form-control", style: "width: 76%;" } %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :phone_number, "Phone number *".html_safe %>
+            <%= form.text_field :phone_number, class: "form-control" %>
+
+            <% if @contact.errors[:phone_number].any? %>
+              <div class="error-message text-danger" id="phone_number_error">
+                <%= @contact.errors[:phone_number].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :email, "Email *".html_safe %>
+            <%= form.text_field :email, class: "form-control" %>
+
+            <% if @contact.errors[:email].any? %>
+              <div class="error-message text-danger" id="email_error">
+                <%= @contact.errors[:email].join(", ") %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :designation %>
+            <%= form.text_field :designation, class: "form-control" %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :remark %>
+            <%= form.text_field :remark, class: "form-control" %>
+          </div>
+        </div>
+        
+
+        <div class="card-header text-center">
+          Contact address
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :address1 %>
+            <%= form.text_field :address1, class: "form-control" %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :address2 %>
+            <%= form.text_field :address2, class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :zip_code %>
+            <%= form.text_field :zip_code, class: "form-control" %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :city %>
+            <%= form.text_field :city, class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%= form.label :state %>
+            <%= form.text_field :state, class: "form-control" %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= form.label :country %>
+            <%= form.text_field :country, class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-group text-center">
+          <%= form.submit class: 'subbtn' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
