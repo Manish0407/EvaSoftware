@@ -5,6 +5,13 @@ class GlassItemsController < ApplicationController
 
   def index
     @glassitems = GlassItem.all
+    @glassitems = @glassitems.page(params[:page]).per(10).order(created_at: :desc)
+    respond_to do |format|
+      format.html
+      format.json { render json: { data: @glassitems } }
+      format.csv { send_data @glassitems.to_csv }
+      # format.xls
+    end
   end
 
   def new

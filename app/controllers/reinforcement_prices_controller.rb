@@ -7,6 +7,7 @@ class ReinforcementPricesController < ApplicationController
     @reinforcement_prices = ReinforcementPrice.all.page(params[:page]).per(10).order(created_at: :desc)
     respond_to do |format|
       format.html
+      format.json { render json: { data: @reinforcement_prices } }
       format.csv { send_data @reinforcement_prices.to_csv }
       # format.xls
     end
