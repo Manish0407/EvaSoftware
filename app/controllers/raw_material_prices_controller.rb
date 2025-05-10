@@ -7,6 +7,7 @@ class RawMaterialPricesController < ApplicationController
     @raw_material_prices = RawMaterialPrice.all.page(params[:page]).per(10).order(created_at: :desc)
     respond_to do |format|
       format.html
+      format.json { render json: { data: @raw_material_prices }}
       format.csv { send_data @raw_material_prices.to_csv }
       # format.xls
     end

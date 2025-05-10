@@ -7,7 +7,7 @@ class HardwarePricesController < ApplicationController
     @hardware_prices = HardwarePrice.all.page(params[:page]).per(10).order(created_at: :desc)
     respond_to do |format|
       format.html
-      format.json { render json: @hardware_prices }
+      format.json { render json: { data: @hardware_prices } }
       format.csv { send_data @hardware_prices.to_csv }
       # format.xls
     end
