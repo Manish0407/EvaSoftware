@@ -51,6 +51,8 @@ Rails.application.routes.draw do
 
   # post 'raw_material_prices/upload_price_list', :to => 'raw_material_prices#upload_price_list'
   resources :window_doors
+  resources :windows
+  
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   ActiveAdmin.routes(self)
