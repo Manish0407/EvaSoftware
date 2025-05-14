@@ -1,5 +1,6 @@
 class Quote < ApplicationRecord
 	belongs_to :opportunity
+	has_many :windows, dependent: :destroy
 	# has_one :won_loss_detail, as: :won_lossable, dependent: :destroy
   	# accepts_nested_attributes_for :won_loss_detail
 
