@@ -23,4 +23,11 @@ class GlassItem < ApplicationRecord
 
   has_many :window_items, as: :material, dependent: :destroy
 
+  before_save :set_default_values
+
+  private
+
+  def set_default_values
+    self.default_price_rate = self.total_glass_value || 0.0
+  end
 end
