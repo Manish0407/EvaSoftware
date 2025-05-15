@@ -33,6 +33,6 @@ class WindowsController < ApplicationController
   private
 
   def window_params
-    params.require(:window).permit(:name, :description, :design_id, :account_id, :location, :floor_number, :note, :quantity, :glass_type, :glass_thickness, :glass_color, :glass_ref, :glass_size, :glass_weight, :glass_area, :glass_price, :glass_total_weight, :glass_rate_of_sqft, :glass_total_price, :window_total_price, :height, :width, :area, :total_weight)
+    params.require(:window).permit(:name, :description, :design_id, :quote_id, :location, :floor_number, :note, :quantity, :glass_type, :glass_thickness, :glass_color, :glass_ref, :glass_size, :glass_weight, :glass_area, :glass_price, :glass_total_weight, :glass_rate_of_sqft, :glass_total_price, :window_total_price, :height, :width, :area, :total_weight)
   end
 end

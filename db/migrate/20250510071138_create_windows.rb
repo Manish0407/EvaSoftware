@@ -4,7 +4,7 @@ class CreateWindows < ActiveRecord::Migration[7.1]
       t.string :name
       t.string :description
       t.references :design
-      t.references :account
+      t.references :quote
       t.string :location
       t.string :floor_number
       t.string :note
