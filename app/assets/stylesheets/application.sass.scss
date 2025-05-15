@@ -260,3 +260,16 @@
 .my-tooltip:hover .tooltiptext {
   visibility: visible;
 }
+
+.table-responsive {
+  overflow: visible !important;
+}
+.dropdown-menu {
+  z-index: 1051; /* higher than cards/tables */
+  position: absolute;
+  min-height: 100px;
+}
+.container-fluid {
+  padding-bottom: 100px;
+}
+
