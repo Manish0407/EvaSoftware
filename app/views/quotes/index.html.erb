@@ -40,7 +40,7 @@
                 <td><%= quote.area %></td>
                 <td>₹<%= number_to_currency(quote.price, unit: '', delimiter: ',', precision: 2) %></td>
                 <td>
-                  <%= link_to 'Show', '/window_doors', class: 'btn btn-sm btn-info text-decoration-none text-white' %>
+                  <%= link_to 'Show', "/windows?quote_id=#{quote.id}", class: 'btn btn-sm btn-info text-decoration-none text-white' %>
                 </td>
                 <td class="position-relative">
                   <div class="dropdown">

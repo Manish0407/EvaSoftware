@@ -6,6 +6,15 @@ class WindowsController < ApplicationController
     @window = Window.new()
   end
 
+  def index
+    @windows = Window.where(quote_id: params[:quote_id])
+    respond_to do |format| 
+      format.html
+      format.json { render json: @windows }
+      format.csv { send_data @windows.to_csv }
+    end
+  end
+  
   def create
     @window = Window.new(window_params)
     if @window.save
