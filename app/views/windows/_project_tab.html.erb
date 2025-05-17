@@ -1,0 +1,19 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h5>Designs</h5>
+  <%= link_to 'Create design', '/window_doors', class: 'btn btn-sm btn-info text-decoration-none text-white' %>
+</div>
+
+<div class="row">
+  <% @windows.each do |design| %>
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm">
+        <%= image_tag design.image_url, class: "card-img-top", alt: design.ref %>
+        <div class="card-body">
+          <h6><%= design.ref %></h6>
+          <p><strong>Qty:</strong> <%= design.quantity %></p>
+          <p><strong>Location:</strong> <%= design.location %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
